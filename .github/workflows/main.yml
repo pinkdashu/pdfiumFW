@@ -19,6 +19,8 @@ jobs:
       run: |
         pwd
         ls
+        mkdir ./lib/arm64/pdfium.framework
+        mkdir ./lib/x64/pdfium.framework
         lipo -create ./lib/arm64/libpdfium.dylib -output ./lib/arm64/pdfium.framework/pdfium
         lipo -create ./lib/x64/libpdfium.dylib -output ./lib/x64/pdfium.framework/pdfium
         xcodebuild -create-xcframework -framework ./lib/arm64/pdfium.framework -framework ./lib/x64/pdfium.framework -output ./pdfium.xcframework
