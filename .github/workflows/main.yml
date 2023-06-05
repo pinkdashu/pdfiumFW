@@ -1,6 +1,9 @@
 name: turn dylib to framework
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - 'master'
   
 jobs:
   my_job:
@@ -16,7 +19,6 @@ jobs:
       run: |
         pwd
         ls
-        lipo -help
         lipo -create ./lib/arm64/libpdfium.dylib -output ./lib/arm64/pdfium
         lipo -create ./lib/x64/libpdfium.dylib -output ./lib/x64/pdfium
         xcodebuild -create-xcframework -framework ./lib/arm64/pdfium -framework ./lib/x64/pdfium -output ./pdfium.xcframework
