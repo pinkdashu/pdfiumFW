@@ -19,9 +19,9 @@ jobs:
       run: |
         pwd
         ls
-        lipo -create ./lib/arm64/libpdfium.dylib -output ./lib/arm64/pdfium
-        lipo -create ./lib/x64/libpdfium.dylib -output ./lib/x64/pdfium
-        xcodebuild -create-xcframework -framework ./lib/arm64/ -framework ./lib/x64/ -output ./pdfium.xcframework
+        lipo -create ./lib/arm64/libpdfium.dylib -output ./lib/arm64/pdfium.framework/pdfium
+        lipo -create ./lib/x64/libpdfium.dylib -output ./lib/x64/pdfium.framework/pdfium
+        xcodebuild -create-xcframework -framework ./lib/arm64/pdfium.framework -framework ./lib/x64/pdfium.framework -output ./pdfium.xcframework
         # lipo -create /Users/runner/work/pdfium_libs/pdfium_libs/ios/Frameworks/libpdfium.dylib -output pdfium
         # lipo -info ./pdfium
     - name: Publish framework
