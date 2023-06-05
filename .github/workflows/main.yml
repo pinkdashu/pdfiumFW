@@ -22,9 +22,8 @@ jobs:
         mkdir ./lib/arm64/pdfium.framework
         mkdir ./lib/x64/pdfium.framework
         lipo -create ./lib/arm64/libpdfium.dylib -output ./lib/arm64/pdfium.framework/pdfium
-        
-        lipo --help
         xcodebuild --help
+        lipo -h
         # lipo -create /Users/runner/work/pdfium_libs/pdfium_libs/ios/Frameworks/libpdfium.dylib -output pdfium
         # lipo -info ./pdfium
     - name: Publish framework
